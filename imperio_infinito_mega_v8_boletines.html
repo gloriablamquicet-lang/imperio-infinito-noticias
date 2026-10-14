@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#081426">
+<title>Imperio Infinito — Mega Clicker v7</title>
+<style>
+:root{--bg:#071326;--panel:#10233c;--panel2:#172f4e;--gold:#ffcb52;--cyan:#60ddff;--green:#59e0a1;--text:#f5f7ff;--muted:#a8bdd5;--red:#ff7878}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:radial-gradient(ellipse at top,#19395c 0,#081426 55%,#040914 100%);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}body{padding-bottom:26px}button{font:inherit;cursor:pointer;border:0;color:inherit;touch-action:manipulation}button:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}.app{max-width:760px;margin:auto;padding:14px}.top{display:flex;justify-content:space-between;align-items:center;gap:10px}.brand{font-weight:1000;font-size:clamp(20px,5vw,30px);letter-spacing:.4px;color:var(--gold);text-shadow:0 2px 0 #6d3900}.sub{color:var(--muted);font-size:12px}.pill{background:#132b48;border:1px solid #294a6b;border-radius:999px;padding:8px 11px;font-size:12px;color:var(--muted)}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0}.stat{background:linear-gradient(145deg,#173454,#0c1d32);border:1px solid #2c4c6e;border-radius:14px;padding:10px;text-align:center;min-width:0}.stat .num{font-size:clamp(17px,4vw,24px);font-weight:900;color:var(--gold);overflow-wrap:anywhere}.stat .label{font-size:11px;color:var(--muted)}.hero{position:relative;overflow:hidden;background:linear-gradient(160deg,#173c60,#0a172a 72%);border:1px solid #2b5278;border-radius:22px;text-align:center;padding:18px 14px 20px;box-shadow:0 12px 35px #0005}.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 38%,#ffc84a1e,transparent 44%);pointer-events:none}.level{display:inline-block;border:1px solid #5c7897;background:#07172acc;border-radius:999px;padding:5px 12px;font-size:12px;color:#d6e9ff}.avatar-wrap{height:218px;display:flex;justify-content:center;align-items:center;position:relative}.avatar{width:170px;height:190px;display:flex;justify-content:center;align-items:center;filter:drop-shadow(0 10px 8px #0008);user-select:none;transition:transform .07s}.avatar:active{transform:scale(.93)}.avatar svg{width:100%;height:100%;overflow:visible}.tap{width:min(100%,340px);background:linear-gradient(#ffdf78,#ffac22);color:#402500;font-weight:1000;font-size:19px;border-radius:15px;padding:15px 20px;box-shadow:0 5px 0 #9b590c,0 9px 18px #0005}.tap:active{transform:translateY(3px);box-shadow:0 2px 0 #9b590c}.hint{font-size:12px;color:var(--muted);margin-top:12px}.float{position:absolute;color:#ffe37a;font-weight:1000;font-size:22px;pointer-events:none;animation:rise .8s ease-out forwards;text-shadow:0 2px 6px #000}.float.crit{color:#ff9b55;font-size:28px}@keyframes rise{to{transform:translateY(-85px) scale(1.15);opacity:0}}.section{margin-top:17px}.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:9px;gap:8px}.section h2{font-size:18px;margin:0}.section-head small{color:var(--muted);font-size:11px}.tabs{display:flex;gap:6px;overflow:auto;padding:3px 0 8px}.tab{white-space:nowrap;background:#10233c;border:1px solid #294665;color:var(--muted);border-radius:10px;padding:9px 12px;font-size:12px;font-weight:800}.tab.active{background:#ffcb52;color:#3c2600;border-color:#ffe29a}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.upgrade{background:linear-gradient(145deg,#142b47,#0b1a2e);border:1px solid #294765;border-radius:15px;padding:12px;min-width:0}.upgrade .ico{font-size:26px}.upgrade h3{font-size:14px;margin:5px 0 3px}.upgrade p{font-size:11px;color:var(--muted);min-height:30px;margin:0 0 9px;line-height:1.4}.meta{font-size:11px;color:#b5d4ec;margin-bottom:9px}.buy{width:100%;border-radius:10px;background:linear-gradient(180deg,#227fc1,#15548d);padding:10px 7px;font-weight:900;font-size:12px}.buy.gold{background:linear-gradient(180deg,#ffda70,#ffae28);color:#412800}.buy:disabled{filter:grayscale(.8);opacity:.45;cursor:not-allowed}.panel{background:#0e2037;border:1px solid #294665;border-radius:15px;padding:13px}.bar{height:8px;border-radius:20px;background:#263c55;overflow:hidden;margin-top:7px}.bar span{display:block;height:100%;background:linear-gradient(90deg,#4bc8ff,#66f2b0);width:0%;transition:width .2s}.rowline{display:flex;justify-content:space-between;gap:10px;align-items:center;font-size:12px;margin:8px 0}.muted{color:var(--muted)}.mission{padding:10px 0;border-bottom:1px solid #243c56}.mission:last-child{border-bottom:0}.mission button{padding:7px 10px;border-radius:8px;background:#204e70;font-size:11px;font-weight:800}.notice{color:var(--muted);font-size:11px;line-height:1.5;margin-top:12px;text-align:center}.bottom{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:16px}.bottom button{background:#10233c;border:1px solid #294665;border-radius:12px;padding:10px 3px;font-size:11px;color:#d6e7f8}.bottom span{display:block;font-size:21px;margin-bottom:3px}.toast{position:fixed;left:50%;bottom:18px;transform:translate(-50%,20px);background:#fbd365;color:#382400;padding:10px 16px;border-radius:999px;font-size:12px;font-weight:900;opacity:0;pointer-events:none;transition:.2s;z-index:5;white-space:nowrap;max-width:90vw}.toast.show{opacity:1;transform:translate(-50%,0)}.modalback{position:fixed;inset:0;background:#0009;display:none;align-items:center;justify-content:center;padding:18px;z-index:10}.modalback.show{display:flex}.modal{max-width:420px;width:100%;background:#10233c;border:1px solid #416384;border-radius:18px;padding:18px;box-shadow:0 20px 70px #0009}.modal h2{margin:0 0 8px}.modal p{color:var(--muted);font-size:13px;line-height:1.5}.modal-actions{display:flex;gap:8px}.modal-actions button{flex:1;padding:11px;border-radius:10px;background:#1d4f76;font-weight:800}.modal-actions .danger{background:#7b3038}
+.collection{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.character{background:linear-gradient(145deg,#162f4e,#0a192c);border:1px solid #294765;border-radius:15px;padding:12px;text-align:center}
+.character .portrait{font-size:43px;line-height:1.2;filter:drop-shadow(0 5px 5px #0006)}
+.character h3{margin:7px 0 3px;font-size:14px}.character p{font-size:11px;color:var(--muted);min-height:28px;margin:0 0 8px}
+.character.active{border-color:var(--gold);box-shadow:0 0 0 1px #ffcb5244}
+.character.locked{opacity:.8}
+.rarity{font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:var(--cyan);font-weight:900}
+.achievement{display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid #243c56}.achievement:last-child{border-bottom:0}.achievement .badgeicon{font-size:25px}
+.daily{background:linear-gradient(120deg,#183b57,#162745);border:1px solid #3c6683;border-radius:15px;padding:14px}
+.wheel-stage{width:min(78vw,300px);aspect-ratio:1;margin:12px auto 18px;position:relative;filter:drop-shadow(0 8px 14px #0008)}
+.wheel-pointer{position:absolute;z-index:2;top:-10px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:17px solid transparent;border-right:17px solid transparent;border-top:0;border-bottom:0;border-top:28px solid #fff2a4;filter:drop-shadow(0 2px 2px #000);}
+.wheel-disc{width:100%;height:100%;border-radius:50%;border:8px solid #ffd76a;background:conic-gradient(#d84a69 0deg 45deg,#3b8ed0 45deg 90deg,#7b54c9 90deg 135deg,#229f85 135deg 180deg,#f1a72c 180deg 225deg,#bd4bd1 225deg 270deg,#2877b7 270deg 315deg,#4eaa59 315deg 360deg);position:relative;overflow:hidden;transform:rotate(0deg);transition:transform 5s cubic-bezier(.12,.72,.12,1);box-shadow:inset 0 0 0 3px #fff6, inset 0 0 25px #0006}
+.wheel-disc.spinning{transition:transform 5s cubic-bezier(.12,.72,.12,1)}
+.wheel-label{position:absolute;left:50%;top:50%;width:43%;height:28px;margin-left:-21.5%;margin-top:-14px;transform-origin:center center;text-align:center;font-weight:1000;font-size:11px;color:white;text-shadow:0 2px 3px #000;display:flex;align-items:center;justify-content:center}
+.wheel-hub{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:50%;border:4px solid #ffe8a1;background:radial-gradient(circle at 35% 30%,#fff2a5,#d68a17 70%,#74410a);display:grid;place-items:center;font-size:26px;z-index:1;box-shadow:0 2px 8px #0008}
+.wheel-btnrow{max-width:320px;margin:auto}
+@keyframes wheelGlow{50%{filter:drop-shadow(0 0 14px #ffcf52)}}
+.wheel-stage.spinning{animation:wheelGlow 1s ease-in-out infinite}
+.daily h3{margin:0 0 5px}.daily p{margin:0 0 10px;color:var(--muted);font-size:12px}
+@media(min-width:600px){.collection{grid-template-columns:repeat(3,minmax(0,1fr))}.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.avatar-wrap{height:240px}.avatar{height:210px;width:190px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+.battle{background:linear-gradient(135deg,#3a1838,#1a2348 65%,#10233c);border:1px solid #764d8f;border-radius:18px;padding:14px;overflow:hidden;position:relative}.bosshead{display:flex;justify-content:space-between;gap:8px;align-items:center}.bossart{font-size:54px;text-align:center;filter:drop-shadow(0 6px 8px #0008);animation:bossfloat 2s ease-in-out infinite}.bossart.hit{animation:bosshit .18s ease}.bossbar{height:13px;background:#4a263e;border-radius:20px;overflow:hidden;margin:8px 0}.bossbar span{display:block;height:100%;width:100%;background:linear-gradient(90deg,#ff477e,#ffb24b);transition:width .12s}.battlegrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.eventbtn{background:linear-gradient(180deg,#8a4ed2,#512a93);padding:12px;border-radius:12px;font-weight:900;width:100%}.eventbtn:disabled{opacity:.45;filter:grayscale(.8)}.wheelresult{font-size:12px;color:var(--gold);min-height:18px;margin-top:8px;text-align:center}.eventnote{font-size:11px;color:var(--muted);line-height:1.45;margin-top:8px}@keyframes bossfloat{50%{transform:translateY(-5px) rotate(2deg)}}@keyframes bosshit{50%{transform:translateX(7px) scale(.92);filter:brightness(2)}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top"><div><div class="brand">👑 IMPERIO INFINITO</div><div class="sub">Toca. Mejora. Explora. Domina. ¡Sin final!</div></div><div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:flex-end"><button class="pill" id="newsBtn">📢 Boletines</button><button class="pill" id="settingsBtn">⚙️ Ajustes</button></div></header>
+<div class="stats">
+ <div class="stat"><div class="label">🪙 MONEDAS</div><div class="num" id="coins">0</div></div>
+ <div class="stat"><div class="label">⚡ POR CLIC</div><div class="num" id="perClick">1</div></div>
+ <div class="stat"><div class="label">🤖 POR SEGUNDO</div><div class="num" id="perSec">0</div></div>
+</div>
+<section class="hero" id="hero">
+ <div class="level" id="level">👑 Emperador nivel 1</div>
+ <div class="avatar-wrap" id="avatarWrap">
+  <div class="avatar" id="avatar" role="button" tabindex="0" aria-label="Toca al emperador para ganar monedas">
+   <svg viewBox="0 0 180 210" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <ellipse cx="90" cy="195" rx="55" ry="10" fill="#0006"/>
+    <path d="M48 118 Q25 137 31 187 L70 187 L78 137Z" fill="#172b49" stroke="#6784a7" stroke-width="2"/>
+    <path d="M132 118 Q155 137 149 187 L110 187 L102 137Z" fill="#172b49" stroke="#6784a7" stroke-width="2"/>
+    <path d="M53 113 Q90 92 127 113 L143 180 Q90 197 37 180Z" fill="#263e65" stroke="#91a9c9" stroke-width="2"/>
+    <path d="M63 116 L90 148 L117 116 L109 183 L71 183Z" fill="#a82d43"/>
+    <path d="M70 112 L90 143 L110 112 L101 168 L79 168Z" fill="#f2c94c"/>
+    <path d="M62 55 Q90 28 118 55 L115 100 Q90 122 65 100Z" fill="#dca77c" stroke="#70482e" stroke-width="2"/>
+    <path d="M61 67 Q48 40 69 25 Q89 8 110 24 Q135 34 119 69 L111 48 L72 48Z" fill="#4b3027"/>
+    <path d="M64 44 L48 20 L77 28 L90 7 L104 28 L132 18 L116 47Z" fill="#ffca43" stroke="#9a6314" stroke-width="3"/>
+    <circle cx="90" cy="25" r="5" fill="#f5f4d2"/><circle cx="68" cy="34" r="3" fill="#ef6e55"/><circle cx="112" cy="34" r="3" fill="#64dfff"/>
+    <path d="M72 71 Q79 66 85 71 M95 71 Q102 66 108 71" fill="none" stroke="#533526" stroke-width="3" stroke-linecap="round"/>
+    <ellipse cx="78" cy="78" rx="4" ry="3" fill="#25394a"/><ellipse cx="102" cy="78" rx="4" ry="3" fill="#25394a"/>
+    <path d="M83 91 Q90 97 98 90" fill="none" stroke="#874b3e" stroke-width="3" stroke-linecap="round"/>
+    <path d="M50 116 L28 139 L43 151 L65 128 M130 116 L152 139 L137 151 L115 128" fill="#dca77c" stroke="#70482e" stroke-width="2"/>
+    <path d="M27 139 L19 153 L35 163 L45 151 M153 139 L161 153 L145 163 L135 151" fill="#ffca43" stroke="#9a6314" stroke-width="2"/>
+    <path d="M66 185 L63 202 L82 202 L87 187 M114 185 L117 202 L98 202 L93 187" fill="#101b2b" stroke="#7892b3" stroke-width="2"/>
+   </svg>
+  </div>
+ </div>
+ <button class="tap" id="tapBtn">👑 ¡TOCAR PARA GANAR!</button>
+ <div class="hint">Cada toque te da <b id="tapValue">1</b> monedas · Racha: <b id="streak">x1.0</b> · ¡Busca la moneda dorada!</div>
+ <button class="buy gold" id="goldenBtn" style="display:none;margin:12px auto 0;max-width:290px">🌟 ¡MONEDA DORADA! TÓCAME</button>
+</section>
+<section class="section">
+ <div class="section-head"><h2>🐲 Jefe del reino</h2><small>¡Atácalo para ganar tesoros!</small></div>
+ <div class="battle">
+  <div class="bosshead"><b id="bossName">🐲 Dragón saqueador</b><span class="pill" id="bossStage">Jefe 1</span></div>
+  <div class="bossart" id="bossArt">🐲</div>
+  <div class="rowline"><span class="muted">Vida del jefe</span><b id="bossHpText">0 / 0</b></div>
+  <div class="bossbar"><span id="bossHpBar"></span></div>
+  <div class="rowline"><span class="muted">Daño por toque</span><b id="bossDamage">1</b></div>
+  <button class="buy gold" id="bossAttack">⚔️ ¡ATACAR AL JEFE!</button>
+  <div class="eventnote">IMPORTANTE: tocar para ganar monedas NO daña al jefe. Solo el botón «Atacar al jefe» causa daño. Los jefes y sus recompensas escalan sin límite.</div>
+ </div>
+</section>
+<section class="section">
+ <div class="section-head"><h2>🎡 Feria imperial</h2><small>Premios al azar</small></div>
+ <div class="panel" style="text-align:center">
+  <div class="wheel-stage" id="wheelStage" aria-label="Ruleta de ocho premios">
+   <div class="wheel-pointer"></div><div class="wheel-disc" id="wheelDisc">
+    <div class="wheel-label" style="transform:rotate(22.5deg) translateY(-83px)">🪙 x250</div><div class="wheel-label" style="transform:rotate(67.5deg) translateY(-83px)">💰 x2.5K</div><div class="wheel-label" style="transform:rotate(112.5deg) translateY(-83px)">💎 x25K</div><div class="wheel-label" style="transform:rotate(157.5deg) translateY(-83px)">⚡ x2</div><div class="wheel-label" style="transform:rotate(202.5deg) translateY(-83px)">🎁 +10%</div><div class="wheel-label" style="transform:rotate(247.5deg) translateY(-83px)">👑 x100K</div><div class="wheel-label" style="transform:rotate(292.5deg) translateY(-83px)">✨ x5K</div><div class="wheel-label" style="transform:rotate(337.5deg) translateY(-83px)">🍀 +100</div>
+   </div><div class="wheel-hub">👑</div>
+  </div>
+  <p class="muted" style="font-size:12px;margin:4px 0 12px">¡Mira cómo gira! Ocho discos de premios. Giro gratis cada 10 minutos.</p>
+  <div class="wheel-btnrow"><button class="eventbtn" id="wheelBtn">🎁 GIRAR LA RULETA</button></div>
+  <div class="wheelresult" id="wheelResult">¡La suerte favorece al emperador!</div>
+  <div class="eventnote" id="wheelTimer">Giro disponible</div>
+ </div>
+</section>
+<section class="section">
+ <div class="section-head"><h2>🚀 Mejoras</h2><small>Compra con tus monedas</small></div>
+ <div class="tabs" id="tabs">
+  <button class="tab active" data-tab="click">👆 Clic</button><button class="tab" data-tab="auto">🤖 Autoclickers</button><button class="tab" data-tab="boost">✨ Poderes</button>
+ </div>
+ <div class="grid" id="upgrades"></div>
+</section>
+<section class="section">
+ <div class="section-head"><h2>🌍 Expediciones infinitas</h2><small>Desbloquea nuevas eras</small></div>
+ <div class="panel" id="expeditionPanel">
+  <div class="rowline"><b id="eraName">🌿 Era de los comienzos</b><span class="pill" id="eraLevel">Era 1</span></div>
+  <p class="muted" style="font-size:12px;line-height:1.5">Cada expedición cuesta monedas y aumenta permanentemente el premio de tus clics. Las eras continúan escalando: no existe una última era.</p>
+  <div class="rowline"><span>Bonificación de expedición</span><b id="eraBonus">x1.00</b></div>
+  <button class="buy gold" id="expeditionBtn">🚀 Comenzar expedición</button>
+ </div>
+</section>
+<section class="section">
+ <div class="section-head"><h2>🧬 Laboratorio de investigación</h2><small>Investigaciones permanentes</small></div>
+ <div class="panel" id="researchPanel">
+  <div class="rowline"><b>🔬 Investigación imperial</b><span class="pill" id="researchLevel">Nivel 0</span></div>
+  <p class="muted" style="font-size:12px">Cada nivel multiplica tus ganancias por 1,10. La mejora se conserva al renacer y el bonus se acumula de forma compuesta.</p>
+  <div class="rowline"><span>Bonificación de investigación</span><b id="researchBonus">+0%</b></div>
+  <div class="rowline"><span>Coste siguiente</span><b id="researchCost">1.000</b></div>
+  <button class="buy" id="researchBtn">🧪 Investigar</button>
+ </div>
+</section>
+<section class="section">
+ <div class="section-head"><h2>🌟 Renacimiento</h2><small>Reinicia para volverte más fuerte</small></div>
+ <div class="panel">
+  <div class="rowline"><span>Multiplicador permanente</span><b id="multiplier" style="color:var(--gold)">x1.0</b></div>
+  <div class="rowline"><span class="muted">Monedas actuales</span><b id="rebirthCoins">0</b></div>
+  <div class="rowline"><span class="muted">Recompensa al renacer</span><b id="rebirthGain" style="color:var(--green)">+0 coronas</b></div>
+  <div class="bar"><span id="rebirthBar"></span></div>
+  <p class="muted" style="font-size:11px;line-height:1.5">Al renacer reinicias las monedas y mejoras normales, pero ganas coronas que multiplican todas tus ganancias para siempre. Necesitas 10.000 monedas para el primer renacimiento.</p>
+  <button class="buy gold" style="font-size:14px" id="rebirthBtn" disabled>👑 RENACER — Necesitas 10.000 monedas</button>
+ </div>
+</section>
+<section class="section">
+ <div class="section-head"><h2>🎯 Misiones</h2><small>Recompensas extra</small></div>
+ <div class="panel" id="missions"></div>
+</section>
+<section class="section">
+ <div class="section-head"><h2>🎁 Recompensa diaria</h2><small>Vuelve cada día</small></div>
+ <div class="daily"><h3 id="dailyTitle">🎁 Cofre diario disponible</h3><p id="dailyDesc">Reclama monedas y aumenta tu racha diaria.</p><button class="buy gold" id="dailyBtn">🎁 RECLAMAR RECOMPENSA</button></div>
+</section>
+<section class="section">
+ <div class="section-head"><h2>🧙 Galería de personajes</h2><small>Compra y equipa héroes</small></div>
+ <div id="characters" class="collection"></div>
+</section>
+<section class="section">
+ <div class="section-head"><h2>🐾 Mascotas mágicas</h2><small>Bonificaciones acumulables</small></div>
+ <div id="pets" class="collection"></div>
+</section>
+<section class="section">
+ <div class="section-head"><h2>⚔️ Habilidades activas</h2><small>Poderes con enfriamiento</small></div>
+ <div class="panel">
+  <div class="rowline"><b>🔥 Frenesí imperial</b><span class="pill" id="frenzyStatus">Listo</span></div>
+  <p class="muted" style="font-size:12px;line-height:1.5">Triplica todas las ganancias durante 30 segundos. Se recarga en 120 segundos.</p>
+  <button class="buy gold" id="frenzyBtn">🔥 ACTIVAR FRENESÍ ×3</button>
+  <div class="rowline" style="margin-top:16px"><b>☄️ Lluvia de monedas</b><span class="pill">Recompensa instantánea</span></div>
+  <p class="muted" style="font-size:12px;line-height:1.5">Invoca una lluvia de monedas equivalente a 30 veces tus ganancias por clic.</p>
+  <button class="buy" id="coinRainBtn">☄️ INVOCAR LLUVIA</button>
+ </div>
+</section>
+<section class="section">
+ <div class="section-head"><h2>🛡️ Forja imperial</h2><small>Equipo permanente</small></div>
+ <div class="panel" id="forgePanel">
+  <p class="muted" style="font-size:12px;line-height:1.5">Compra reliquias únicas. Cada una da una bonificación real que se conserva al renacer. Las reliquias obtenidas se acumulan.</p><div class="rowline"><span>Bonificación de reliquias</span><b id="forgeBonusText">+0%</b></div>
+  <div id="forgeItems" class="collection"></div>
+ </div>
+</section>
+<section class="section">
+ <div class="section-head"><h2>🏆 Logros y colección</h2><small>Objetivos para toda la partida</small></div>
+ <div class="panel" id="achievements"></div>
+</section>
+<div class="bottom"><button id="statsBtn"><span>📊</span>Estadísticas</button><button id="saveBtn"><span>💾</span>Guardar</button><button id="soundBtn"><span>🔊</span>Sonido: sí</button><button id="resetBtn"><span>🗑️</span>Reiniciar</button></div>
+<div class="notice">Tu progreso se guarda automáticamente en este dispositivo. No necesitas cuenta ni conexión a un servidor.<br>Imperio Infinito · Clicker Infinito v7.0 · expansión mega y progreso infinito</div>
+</div>
+<div class="toast" id="toast"></div>
+<div class="modalback" id="modalback"><div class="modal"><h2 id="modalTitle">Estadísticas</h2><div id="modalBody"></div><div class="modal-actions"><button id="modalClose">Cerrar</button><button id="modalConfirm" class="danger" style="display:none">Confirmar</button></div></div></div>
+<script>
+(()=>{
+'use strict';
+const $=id=>document.getElementById(id);
+const fmt=n=>{if(!Number.isFinite(n))return '∞';if(n<1000)return Math.floor(n).toLocaleString('es-CO');if(n>=1e21)return n.toExponential(2);const units=['K','M','B','T','Qa','Qi','Sx','Sp','Oc','No','Dc'];let i=-1;while(n>=1000&&i<units.length-1){n/=1000;i++}return i===units.length-1&&n>=1000?n.toExponential(2):n.toFixed(n<10?1:0)+units[i]};
+const base={coins:0,totalCoins:0,totalClicks:0,rebirths:0,coronas:0,earnedMissions:[],sound:true,characters:['king'],activeCharacter:'king',autoLevelTotal:0,pets:[],lastDaily:'',dailyStreak:0,lastSeen:Date.now(),goldenFound:0,bossStage:1,bossHp:500,lastWheel:0,buffUntil:0,era:0,research:0,bossAttacks:0,totalBossDamage:0,frenzyUntil:0,frenzyReadyAt:0,forgeOwned:[]};
+let s={...base};let currentTab='click';let toastTimer;let audioCtx=null;let confirmAction=null;let streak=0;let lastTap=0;let goldenTimer=null;
+function mult(){return (1+s.coronas*.1)*Math.pow(2,Math.max(0,s.rebirths||0))*Math.pow(1.05,Math.max(0,s.research||0))}
+function clickPower(){let raw=1;for(const d of upgradeDefs)if(d.kind==='click')raw+=lv(d.levelKey)*d.amount;return Math.max(1,Math.floor(raw*mult()*(1+charBonus('click'))*(1+forgeBonus('click'))))}
+function cps(){let raw=0;for(const d of upgradeDefs)if(d.kind==='auto')raw+=lv(d.levelKey)*d.amount;return Math.floor(raw*mult()*(1+charBonus('auto'))*(1+forgeBonus('auto')))}
+function cost(type){const lv=s[type+'Level'];const starts={click:25,auto:75,power:250};const rate={click:1.55,auto:1.7,power:2.15};return Math.floor(starts[type]*Math.pow(rate[type],lv))}
+function addCoins(n){if(!Number.isFinite(n)||n<=0)return;s.coins=Math.min(1e300,Math.max(0,Number(s.coins)||0)+n);s.totalCoins=Math.min(1e300,Math.max(0,Number(s.totalCoins)||0)+n)}
+function toast(msg){$('toast').textContent=msg;$('toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').classList.remove('show'),1700)}
+function sound(){if(!s.sound)return;try{audioCtx=audioCtx||new (window.AudioContext||window.webkitAudioContext)();const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type='sine';o.frequency.value=660;g.gain.value=.035;o.connect(g);g.connect(audioCtx.destination);o.start();o.stop(audioCtx.currentTime+.055)}catch(e){}}
+function floatText(text,crit=false){const el=document.createElement('div');el.className='float'+(crit?' crit':'');el.textContent=text;el.style.left=(22+Math.random()*56)+'%';el.style.top=(24+Math.random()*35)+'%';$('hero').appendChild(el);setTimeout(()=>el.remove(),850)}
+function tap(){const now=Date.now();streak=now-lastTap<1300?Math.min(30,streak+1):1;lastTap=now;const combo=1+Math.floor(streak/5)*.1;const crit=Math.random()<critChance();const gain=Math.floor(clickPower()*combo*(crit?3+(s.u_power4||0):1));addCoins(gain);s.totalClicks++;floatText('+'+fmt(gain)+(crit?' ¡CRÍTICO!':''),crit);sound();render();save(false)}
+$('tapBtn').addEventListener('click',tap);$('avatar').addEventListener('click',tap);$('avatar').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();tap()}});
+const upgradeDefs=[
+ {id:'click1',tab:'click',icon:'👆',name:'Dedo de acero',desc:'Cada toque gana +2 monedas.',base:25,rate:1.55,levelKey:'u_click1',kind:'click',amount:2},
+ {id:'click2',tab:'click',icon:'🥊',name:'Guante de oro',desc:'Golpes más rentables.',base:180,rate:1.75,levelKey:'u_click2',kind:'click',amount:8},
+ {id:'click3',tab:'click',icon:'⚡',name:'Toque eléctrico',desc:'Un toque cargado de energía.',base:1200,rate:1.85,levelKey:'u_click3',kind:'click',amount:30},
+ {id:'click4',tab:'click',icon:'💎',name:'Dedos de diamante',desc:'Multiplica la fuerza de tus clics.',base:9500,rate:2.0,levelKey:'u_click4',kind:'click',amount:120},
+ {id:'click5',tab:'click',icon:'👑',name:'Toque del emperador',desc:'Poder de clic de élite.',base:85000,rate:2.15,levelKey:'u_click5',kind:'click',amount:650},
+ {id:'auto1',tab:'auto',icon:'🤖',name:'Autoclicker de bronce',desc:'Genera monedas automáticamente.',base:1500,rate:1.9,levelKey:'u_auto1',kind:'auto',amount:3},
+ {id:'auto2',tab:'auto',icon:'🦾',name:'Brazo mecánico',desc:'Un ayudante mucho más rápido.',base:12000,rate:2.0,levelKey:'u_auto2',kind:'auto',amount:18},
+ {id:'auto3',tab:'auto',icon:'⚙️',name:'Fábrica de clics',desc:'Una línea de producción automática.',base:90000,rate:2.05,levelKey:'u_auto3',kind:'auto',amount:100},
+ {id:'auto4',tab:'auto',icon:'🧙',name:'Mago recolector',desc:'Magia que convierte tiempo en oro.',base:750000,rate:2.15,levelKey:'u_auto4',kind:'auto',amount:650},
+ {id:'auto5',tab:'auto',icon:'🛰️',name:'Núcleo orbital',desc:'Tecnología automática avanzada.',base:8500000,rate:2.25,levelKey:'u_auto5',kind:'auto',amount:5000},
+ {id:'power1',tab:'boost',icon:'🍀',name:'Amuleto de suerte',desc:'Aumenta la probabilidad de crítico.',base:500,rate:2.0,levelKey:'u_power1',kind:'power',amount:1},
+ {id:'power2',tab:'boost',icon:'🔥',name:'Llama imperial',desc:'Mejora todas las ganancias un poco.',base:5000,rate:2.1,levelKey:'u_power2',kind:'mult',amount:.05},
+ {id:'power3',tab:'boost',icon:'🌌',name:'Aura cósmica',desc:'Aumenta las monedas de cada clic.',base:50000,rate:2.2,levelKey:'u_power3',kind:'mult',amount:.12},
+ {id:'power4',tab:'boost',icon:'🧿',name:'Ojo del destino',desc:'Tus golpes críticos son más potentes.',base:450000,rate:2.25,levelKey:'u_power4',kind:'crit',amount:1},
+ {id:'power5',tab:'boost',icon:'✨',name:'Bendición eterna',desc:'Una mejora legendaria de ganancias.',base:5000000,rate:2.35,levelKey:'u_power5',kind:'mult',amount:.3}
+];
+
+// Contenido ampliado: mejoras independientes de niveles ilimitados.
+const extraUpgradeSeeds = [
+ ['click','🧤','Guantelete volcánico','Cada clic arde con poder',250000,2.25,'click',2500],
+ ['click','🌩️','Puño de tormenta','Golpes que parten el cielo',1800000,2.3,'click',14000],
+ ['click','🪐','Gravedad inversa','Aplasta monedas de otros mundos',15000000,2.35,'click',85000],
+ ['click','🧬','ADN imperial','Evoluciona el poder de cada toque',150000000,2.4,'click',550000],
+ ['click','🕳️','Puño del vacío','El vacío paga una fortuna',1800000000,2.45,'click',4000000],
+ ['click','♾️','Toque infinito','Una mejora para una eternidad',25000000000,2.5,'click',35000000],
+ ['click','💥','Golpe de supernova','Convierte estrellas en monedas',350000000000,2.55,'click',300000000],
+ ['click','🌀','Paradoja táctil','Cada toque rompe la realidad',5e12,2.6,'click',3e9],
+ ['auto','🐜','Ejército de duendes','Una legión trabaja por ti',25000000,2.2,'auto',15000],
+ ['auto','🏭','Megafábrica','Producción a escala imperial',300000000,2.25,'auto',120000],
+ ['auto','🌋','Reactor de magma','Energía sin descanso',3500000000,2.3,'auto',1000000],
+ ['auto','🛸','Flota recolectora','Naves minan el cosmos',45000000000,2.35,'auto',9000000],
+ ['auto','🌠','Lluvia de estrellas','Cada estrella es una fortuna',6e11,2.4,'auto',8e7],
+ ['auto','🧿','Ojo automatizador','Todo trabaja mientras juegas',8e12,2.45,'auto',8e8],
+ ['auto','🌌','Fábrica multiversal','Produce en universos paralelos',1e14,2.5,'auto',1e10],
+ ['auto','♾️','Motor infinito','Nunca deja de producir',2e15,2.55,'auto',1e12],
+ ['boost','🧪','Elixir de riqueza','Potencia permanente acumulable',900000,2.15,'mult',.08],
+ ['boost','🔮','Orbe de la fortuna','Multiplica todas las fuentes',9000000,2.2,'mult',.15],
+ ['boost','☄️','Cometa dorado','Más riqueza por cada acción',90000000,2.25,'mult',.25],
+ ['boost','🪄','Magia de los antiguos','Un poder cada vez mayor',900000000,2.3,'mult',.4],
+ ['boost','🧿','Sello del infinito','La riqueza no deja de crecer',9e9,2.35,'mult',.6],
+ ['boost','🧠','Mente omnisciente','Mejora clics y automatización',9e10,2.4,'mult',.85],
+ ['boost','🌈','Prisma eterno','Refracta tus ganancias',9e11,2.45,'mult',1.2],
+ ['boost','💫','Singularidad','Dobla las reglas del progreso',9e12,2.5,'mult',1.8]
+];
+extraUpgradeSeeds.forEach((a,i)=>{const [tab,icon,name,desc,baseCost,rate,kind,amount]=a;upgradeDefs.push({id:'endless'+i,tab,icon,name,desc,base:baseCost,rate,levelKey:'u_endless'+i,kind,amount})});
+const characterDefs=[
+ {id:'king',name:'Emperador',emoji:'👑',cost:0,rarity:'Común',desc:'El fundador de tu imperio.',bonus:'Clic básico',bonusType:'none'},
+ {id:'knight',name:'Caballero dorado',emoji:'🛡️',cost:2500,rarity:'Poco común',desc:'Guerrero leal que mejora el clic.',bonus:'+10% por clic',bonusType:'click',bonusVal:.10},
+ {id:'wizard',name:'Mago de monedas',emoji:'🧙',cost:18000,rarity:'Raro',desc:'Convierte la magia en monedas.',bonus:'+15% automático',bonusType:'auto',bonusVal:.15},
+ {id:'ninja',name:'Ninja veloz',emoji:'🥷',cost:125000,rarity:'Épico',desc:'Cada movimiento vale oro.',bonus:'+25% por clic',bonusType:'click',bonusVal:.25},
+ {id:'dragon',name:'Dragón real',emoji:'🐉',cost:1250000,rarity:'Legendario',desc:'Su fuego multiplica la fortuna.',bonus:'+35% a todo',bonusType:'all',bonusVal:.35},
+ {id:'robot',name:'Titán mecánico',emoji:'🤖',cost:15000000,rarity:'Mítico',desc:'Una máquina de generar riqueza.',bonus:'+60% automático',bonusType:'auto',bonusVal:.60},
+ {id:'phoenix',name:'Fénix eterno',emoji:'🔥',cost:180000000,rarity:'Celestial',desc:'Renace más fuerte de las cenizas.',bonus:'+50% a todo',bonusType:'all',bonusVal:.50},
+ {id:'void',name:'Rey del vacío',emoji:'🌑',cost:2500000000,rarity:'Divino',desc:'Doblega las reglas de la riqueza.',bonus:'+100% a todo',bonusType:'all',bonusVal:1}
+];
+function lv(key){return s[key]||0}
+function costDef(d){const v=d.base*Math.pow(d.rate,lv(d.levelKey));return Number.isFinite(v)?Math.min(1e300,Math.floor(v)):1e300}
+function charBonus(kind){const c=characterDefs.find(x=>x.id===s.activeCharacter);return c&&(c.bonusType===kind||c.bonusType==='all')?c.bonusVal:0}
+const petDefs=[{id:'slime',name:'Slime de oro',emoji:'🟡',cost:5000,bonus:.05,desc:'+5% a todas las ganancias'},{id:'fox',name:'Zorro de la suerte',emoji:'🦊',cost:45000,bonus:.12,desc:'+12% a todas las ganancias'},{id:'owl',name:'Búho sabio',emoji:'🦉',cost:350000,bonus:.22,desc:'+22% a todas las ganancias'},{id:'babyDragon',name:'Dragón bebé',emoji:'🐲',cost:3000000,bonus:.4,desc:'+40% a todas las ganancias'},{id:'unicorn',name:'Unicornio astral',emoji:'🦄',cost:50000000,bonus:.75,desc:'+75% a todas las ganancias'},{id:'star',name:'Estrella viva',emoji:'🌟',cost:1000000000,bonus:1.5,desc:'+150% a todas las ganancias'}];
+function petBonus(){return s.pets.reduce((n,id)=>n+(petDefs.find(p=>p.id===id)?.bonus||0),0)}
+function mult(){let upgradeMult=1;for(const d of upgradeDefs){if(d.kind==='mult')upgradeMult+=lv(d.levelKey)*d.amount}const frenzy=Date.now()<(s.frenzyUntil||0)?3:1;const oldBuff=Date.now()<(s.buffUntil||0)?2:1;return (1+(s.coronas||0)*.1)*upgradeMult*(1+charBonus('all'))*(1+petBonus())*(1+forgeBonus('global'))*frenzy*oldBuff*(1+(s.era||0)*.15)*Math.pow(1.10,Math.max(0,s.research||0))*Math.pow(2,Math.max(0,s.rebirths||0))}
+function clickPower(){let raw=1;for(const d of upgradeDefs)if(d.kind==='click')raw+=lv(d.levelKey)*d.amount;return Math.max(1,Math.floor(raw*mult()*(1+charBonus('click'))*(1+forgeBonus('click'))))}
+function cps(){let raw=0;for(const d of upgradeDefs)if(d.kind==='auto')raw+=lv(d.levelKey)*d.amount;return Math.floor(raw*mult()*(1+charBonus('auto'))*(1+forgeBonus('auto')))}
+function critChance(){return Math.min(.45,.04+(s.u_power1||0)*.01)}
+function buyUpgrade(id){const d=upgradeDefs.find(x=>x.id===id);if(!d)return;const c=costDef(d);if(s.coins<c){toast('Te faltan '+fmt(c-s.coins)+' monedas');return}s.coins-=c;s[d.levelKey]=lv(d.levelKey)+1;if(d.kind==='auto')s.autoLevelTotal++;sound();toast('¡'+d.name+' mejorado!');render();save(false)}
+function renderUpgrades(){const box=$('upgrades');box.innerHTML='';upgradeDefs.filter(d=>d.tab===currentTab).forEach(d=>{const c=costDef(d);const level=lv(d.levelKey);let effect=d.kind==='auto'?`+${fmt(d.amount)} monedas/seg por nivel`:d.kind==='click'?`+${fmt(d.amount)} por clic/nivel`:d.kind==='mult'?`+${Math.round(d.amount*100)}% global/nivel`:d.kind==='crit'?`+potencia crítica/nivel`:`+1% de crítico/nivel`;const card=document.createElement('article');card.className='upgrade';card.innerHTML=`<div class="ico">${d.icon}</div><h3>${d.name}</h3><p>${d.desc}</p><div class="meta">Nivel ${level} · ${effect}</div><button class="buy ${currentTab==='click'?'gold':''}" ${s.coins<c?'disabled':''}>🪙 ${fmt(c)} · Mejorar</button>`;card.querySelector('button').addEventListener('click',()=>buyUpgrade(d.id));box.appendChild(card)})}
+function renderCharacters(){const box=$('characters');if(!box)return;box.innerHTML='';characterDefs.forEach(c=>{const owned=s.characters.includes(c.id);const card=document.createElement('article');card.className='character'+(s.activeCharacter===c.id?' active':'')+(owned?'':' locked');card.innerHTML=`<div class="portrait">${c.emoji}</div><div class="rarity">${c.rarity}</div><h3>${c.name}</h3><p>${c.desc}</p><div class="meta">${c.bonus}</div><button class="buy ${owned?'gold':''}" ${(!owned&&s.coins<c.cost)?'disabled':''}>${owned?(s.activeCharacter===c.id?'Equipado':'Equipar'):'🪙 '+fmt(c.cost)+' · Comprar'}</button>`;card.querySelector('button').addEventListener('click',()=>{if(owned){s.activeCharacter=c.id;toast(c.name+' equipado');render();save(false);return}if(s.coins<c.cost){toast('Te faltan '+fmt(c.cost-s.coins)+' monedas');return}s.coins-=c.cost;s.characters.push(c.id);s.activeCharacter=c.id;toast('¡Nuevo personaje: '+c.name+'!');render();save(false)});box.appendChild(card)})}
+function renderPets(){const box=$('pets');if(!box)return;box.innerHTML='';petDefs.forEach(p=>{const owned=s.pets.includes(p.id);const card=document.createElement('article');card.className='character'+(owned?' active':' locked');card.innerHTML=`<div class="portrait">${p.emoji}</div><div class="rarity">Mascota mágica</div><h3>${p.name}</h3><p>${p.desc}</p><button class="buy ${owned?'gold':''}" ${owned||s.coins<p.cost?'disabled':''}>${owned?'✅ Adoptada':'🪙 '+fmt(p.cost)+' · Adoptar'}</button>`;card.querySelector('button').addEventListener('click',()=>{if(owned)return;if(s.coins<p.cost){toast('Te faltan '+fmt(p.cost-s.coins)+' monedas');return}s.coins-=p.cost;s.pets.push(p.id);toast('¡Mascota desbloqueada!');render();save(false)});box.appendChild(card)})}
+function renderDaily(){const today=new Date(Date.now()-new Date().getTimezoneOffset()*60000).toISOString().slice(0,10);const ready=s.lastDaily!==today;$('dailyBtn').disabled=!ready;$('dailyBtn').textContent=ready?'🎁 RECLAMAR RECOMPENSA':'✅ RECOMPENSA RECLAMADA';$('dailyTitle').textContent=ready?'🎁 Cofre diario disponible':'✨ ¡Vuelve mañana!';$('dailyDesc').textContent=ready?`Racha actual: ${s.dailyStreak||0} días. Recompensa de hoy: ${fmt(500*(1+Math.min(6,s.dailyStreak||0)))} monedas.`:`Llevas una racha de ${s.dailyStreak||1} días. Sigue jugando mañana para mantenerla.`}
+function renderAchievements(){const box=$('achievements');if(!box)return;const list=[['👆','Primeros pasos',s.totalClicks>=10,'Haz 10 clics'],['🪙','Pequeña fortuna',s.totalCoins>=1000,'Consigue 1.000 monedas'],['🤖','Automatización',s.autoLevelTotal>=1,'Compra tu primera mejora automática'],['👑','Nuevo comienzo',s.rebirths>=1,'Haz tu primer renacimiento'],['🐉','Coleccionista',s.characters.length>=4,'Consigue 4 personajes'],['💰','Magnate',s.totalCoins>=1000000,'Consigue 1 millón de monedas en total']];box.innerHTML='';list.forEach(([ico,title,done,desc])=>{const el=document.createElement('div');el.className='achievement';el.innerHTML=`<div class="badgeicon">${done?'🏆':ico}</div><div style="flex:1"><b>${title}</b><div class="muted" style="font-size:11px">${desc}</div></div><b style="color:${done?'var(--green)':'var(--muted)'}">${done?'LOGRADO':'🔒'}</b>`;box.appendChild(el)})}
+function renderMissions(){const ms=[{id:'clicks',title:'Dedos veloces',desc:'Haz 25 clics',progress:s.totalClicks,goal:25,reward:100},{id:'coins',title:'Primer tesoro',desc:'Consigue 500 monedas en total',progress:s.totalCoins,goal:500,reward:150},{id:'auto',title:'¡Que trabajen por ti!',desc:'Compra 1 autoclicker',progress:s.autoLevelTotal,goal:1,reward:250},{id:'upgrade',title:'Aprendiz de emperador',desc:'Compra 5 mejoras de clic',progress:upgradeDefs.filter(d=>d.kind==='click').reduce((a,d)=>a+lv(d.levelKey),0),goal:5,reward:500}];const box=$('missions');box.innerHTML='';ms.forEach(m=>{const done=s.earnedMissions.includes(m.id);const complete=m.progress>=m.goal;const div=document.createElement('div');div.className='mission';div.innerHTML=`<div class="rowline"><b>${done?'✅':complete?'🎁':'🎯'} ${m.title}</b><b style="color:var(--gold)">+${fmt(m.reward)} 🪙</b></div><div class="rowline"><span class="muted">${m.desc}</span><span>${fmt(Math.min(m.progress,m.goal))}/${m.goal}</span></div><div class="bar"><span style="width:${Math.min(100,m.progress/m.goal*100)}%"></span></div><div style="text-align:right;margin-top:8px"><button ${(!complete||done)?'disabled':''}>${done?'Completada':complete?'Cobrar recompensa':'En progreso'}</button></div>`;div.querySelector('button').addEventListener('click',()=>{if(!complete||done)return;s.earnedMissions.push(m.id);addCoins(m.reward);toast('Misión completada: +'+fmt(m.reward));render();save(false)});box.appendChild(div)})}
+function bossMax(){const v=500*Math.pow(1.72,Math.max(0,(s.bossStage||1)-1));return Number.isFinite(v)?Math.max(500,Math.floor(v)):Number.MAX_VALUE}
+function damageBoss(dmg){if(!Number.isFinite(s.bossHp))s.bossHp=bossMax();s.bossHp=Math.max(0,s.bossHp-dmg);const art=$('bossArt');if(art){art.classList.remove('hit');void art.offsetWidth;art.classList.add('hit')}if(s.bossHp<=0){const reward=Math.min(Number.MAX_VALUE,Math.floor(bossMax()*(1.5+(s.bossStage||1)*.2)));addCoins(reward);s.bossStage=(s.bossStage||1)+1;s.bossHp=bossMax();toast('🐲 ¡Jefe derrotado! +'+fmt(reward)+' monedas');floatText('TESORO +'+fmt(reward),true)}renderBoss()}
+function renderBoss(){if(!$('bossHpBar'))return;const max=bossMax();if(!Number.isFinite(s.bossHp)||s.bossHp<=0)s.bossHp=max;$('bossName').textContent=['','🐲 Dragón saqueador','🧌 Titán de piedra','👹 Señor demoníaco','🐙 Kraken ancestral','👑 Rey de las sombras'][(s.bossStage||1)]||'🌌 Devoramundos';$('bossStage').textContent='Jefe '+(s.bossStage||1);$('bossHpText').textContent=fmt(s.bossHp)+' / '+fmt(max);$('bossHpBar').style.width=Math.max(0,Math.min(100,s.bossHp/max*100))+'%';$('bossDamage').textContent=fmt(clickPower());}
+let wheelBusy=false;let wheelRotation=0;
+const wheelPrizes=[
+ {label:'+250 monedas',short:'x250',apply:()=>addCoins(250)},
+ {label:'+2.500 monedas',short:'x2.5K',apply:()=>addCoins(2500)},
+ {label:'+25.000 monedas',short:'x25K',apply:()=>addCoins(25000)},
+ {label:'Doble ganancia durante 60 segundos',short:'x2',apply:()=>{s.buffUntil=Date.now()+60000}},
+ {label:'Tesoro épico: +10% de tus monedas',short:'+10%',apply:()=>addCoins(Math.max(100,Math.floor(s.coins*.1)))},
+ {label:'+100.000 monedas',short:'x100K',apply:()=>addCoins(100000)},
+ {label:'+5.000 monedas',short:'x5K',apply:()=>addCoins(5000)},
+ {label:'Premio de consolación: +100 monedas',short:'+100',apply:()=>addCoins(100)}
+];
+function spinWheel(){const now=Date.now();if(wheelBusy)return;if(now-(s.lastWheel||0)<600000){toast('La ruleta todavía se está recargando');return}const disc=$('wheelDisc'),stage=$('wheelStage');if(!disc)return;wheelBusy=true;$('wheelBtn').disabled=true;$('wheelBtn').textContent='🎡 ¡GIRANDO!';stage.classList.add('spinning');const idx=Math.floor(Math.random()*wheelPrizes.length);const segment=360/wheelPrizes.length;const target=((360-idx*segment-segment/2)%360);wheelRotation+=360*6+target-(((wheelRotation%360)+360)%360);disc.style.transform='rotate('+wheelRotation+'deg)';s.lastWheel=now;setTimeout(()=>{const prize=wheelPrizes[idx];prize.apply();$('wheelResult').textContent='🎉 ¡Ganaste: '+prize.label+'!';stage.classList.remove('spinning');wheelBusy=false;render();save(false);toast('🎡 '+prize.label)},5100)}
+function renderWheel(){const remain=600000-(Date.now()-(s.lastWheel||0));$('wheelBtn').disabled=wheelBusy||remain>0;$('wheelBtn').textContent=wheelBusy?'🎡 ¡GIRANDO!':remain>0?'⏳ RULETA EN RECARGA':'🎁 GIRAR LA RULETA';$('wheelTimer').textContent=wheelBusy?'La suerte está decidiendo tu premio…':remain>0?'Disponible en '+Math.ceil(remain/60000)+' min':'Giro disponible';}
+const forgeDefs=[
+ {id:'crown',icon:'👑',name:'Corona de la fortuna',cost:25000,bonus:0.10,kind:'global',desc:'+10% a todas las ganancias'},
+ {id:'gloves',icon:'🥊',name:'Guantes del titán',cost:250000,bonus:0.20,kind:'click',desc:'+20% a las ganancias por clic'},
+ {id:'hourglass',icon:'⌛',name:'Reloj del infinito',cost:2500000,bonus:0.30,kind:'auto',desc:'+30% a la producción automática'},
+ {id:'crystal',icon:'💠',name:'Cristal multiversal',cost:25000000,bonus:0.50,kind:'global',desc:'+50% a todas las ganancias'},
+ {id:'starblade',icon:'🗡️',name:'Espada estelar',cost:250000000,bonus:0.75,kind:'global',desc:'+75% a todas las ganancias'},
+ {id:'heart',icon:'💖',name:'Corazón eterno',cost:2500000000,bonus:1.00,kind:'global',desc:'+100% a todas las ganancias'}
+];
+function forgeBonus(kind='global'){return (s.forgeOwned||[]).reduce((a,id)=>{const item=forgeDefs.find(x=>x.id===id);return a+(item&&(item.kind===kind||item.kind==='global')?item.bonus:0)},0)}
+function renderForge(){const box=$('forgeItems');if(!box)return;$('forgeBonusText').textContent='Global +'+Math.round(forgeBonus('global')*100)+'% · Clic +'+Math.round(forgeBonus('click')*100)+'% · Auto +'+Math.round(forgeBonus('auto')*100)+'%';box.innerHTML='';for(const item of forgeDefs){const owned=(s.forgeOwned||[]).includes(item.id);const card=document.createElement('article');card.className='character'+(owned?' active':' locked');card.innerHTML=`<div class="portrait">${item.icon}</div><h3>${item.name}</h3><p>${item.desc}</p><div class="meta">Reliquia permanente</div><button class="buy ${owned?'gold':''}" ${owned||s.coins<item.cost?'disabled':''}>${owned?'✅ Obtenida':'🪙 '+fmt(item.cost)+' · Forjar'}</button>`;card.querySelector('button').addEventListener('click',()=>{if(owned)return;if(s.coins<item.cost){toast('Te faltan '+fmt(item.cost-s.coins)+' monedas');return}s.coins-=item.cost;s.forgeOwned=s.forgeOwned||[];s.forgeOwned.push(item.id);toast('¡Reliquia forjada: '+item.name+'!');render();save(false)});box.appendChild(card)}}
+function render(){ const ch=characterDefs.find(c=>c.id===s.activeCharacter)||characterDefs[0];const av=$('avatar');if(av){const emojis={king:'👑',knight:'🛡️',wizard:'🧙',ninja:'🥷',dragon:'🐉',robot:'🤖',phoenix:'🔥',void:'🌑'};av.innerHTML='<div style="font-size:116px;line-height:1;filter:drop-shadow(0 8px 8px #0008)">'+(emojis[ch.id]||ch.emoji)+'</div>';av.setAttribute('aria-label','Toca a '+ch.name+' para ganar monedas')} $('coins').textContent=fmt(s.coins);$('perClick').textContent=fmt(clickPower());$('perSec').textContent=fmt(cps());$('tapValue').textContent=fmt(clickPower());$('level').textContent='👑 Emperador nivel '+(1+Math.floor(s.totalCoins/1000));$('multiplier').textContent='x'+(mult()>=1e12?mult().toExponential(2):mult().toFixed(2));$('rebirthCoins').textContent=fmt(s.coins);const gain=Math.floor(Math.sqrt(Math.max(0,s.coins)/10000));$('rebirthGain').textContent='+'+gain+' coronas';$('rebirthBar').style.width=Math.min(100,s.coins/10000*100)+'%';$('rebirthBtn').disabled=s.coins<10000;$('rebirthBtn').textContent=s.coins<10000?'👑 RENACER — Necesitas '+fmt(10000-s.coins)+' más':'👑 RENACER — Ganar '+gain+' coronas';renderUpgrades();renderMissions();renderCharacters();renderPets();renderDaily();renderAchievements();renderForge();renderBoss();renderSkills();renderWheel();renderEndless();$('streak').textContent='x'+(1+Math.floor(streak/5)*.1).toFixed(1);$('soundBtn').innerHTML='<span>'+(s.sound?'🔊':'🔇')+'</span>Sonido: '+(s.sound?'sí':'no')}
+function renderSkills(){const now=Date.now();const active=now<(s.frenzyUntil||0);const wait=Math.max(0,(s.frenzyReadyAt||0)-now);$('frenzyBtn').disabled=active||wait>0;$('frenzyBtn').textContent=active?'🔥 FRENESÍ ACTIVO ×3':wait>0?'⏳ RECARGA '+Math.ceil(wait/1000)+' s':'🔥 ACTIVAR FRENESÍ ×3';$('frenzyStatus').textContent=active?'Activo '+Math.ceil((s.frenzyUntil-now)/1000)+' s':wait>0?'En '+Math.ceil(wait/1000)+' s':'Listo';$('coinRainBtn').disabled=s.coins<0}
+$('frenzyBtn').addEventListener('click',()=>{const now=Date.now();if(now<(s.frenzyReadyAt||0)||now<(s.frenzyUntil||0)){toast('El frenesí todavía se está recargando');return}s.frenzyUntil=now+30000;s.frenzyReadyAt=now+120000;toast('🔥 ¡Frenesí imperial activado por 30 segundos!');render();save(false)});
+$('coinRainBtn').addEventListener('click',()=>{const reward=Math.max(30,clickPower()*30);addCoins(reward);toast('☄️ ¡Lluvia de monedas! +'+fmt(reward));floatText('+'+fmt(reward));render();save(false)});
+function save(show=true){try{localStorage.setItem('imperioInfinitoSave',JSON.stringify(s));if(show)toast('💾 Progreso guardado')}catch(e){if(show)toast('No se pudo guardar en este navegador')}}
+function load(){try{const raw=localStorage.getItem('imperioInfinitoSave');if(raw){const obj=JSON.parse(raw);s={...base,...obj};if(!Array.isArray(s.earnedMissions))s.earnedMissions=[];if(!Array.isArray(s.characters))s.characters=['king'];if(!Array.isArray(s.pets))s.pets=[];if(!Array.isArray(s.forgeOwned))s.forgeOwned=[];const away=Math.max(0,Math.min(8*3600,(Date.now()-(s.lastSeen||Date.now()))/1000));const offline=Math.floor(away*cps());if(offline>0){s.coins+=offline;s.totalCoins+=offline;setTimeout(()=>toast('Mientras no estabas: +'+fmt(offline)+' monedas'),500)}s.lastSeen=Date.now();for(const d of upgradeDefs)if(typeof s[d.levelKey]!=='number')s[d.levelKey]=0}}catch(e){s={...base}}}
+function openModal(title,body,confirmLabel,action){$('modalTitle').textContent=title;$('modalBody').innerHTML=body;$('modalConfirm').style.display=confirmLabel?'block':'none';$('modalConfirm').textContent=confirmLabel||'';confirmAction=action||null;$('modalback').classList.add('show')}
+$('modalClose').onclick=()=> $('modalback').classList.remove('show');$('modalback').addEventListener('click',e=>{if(e.target===$('modalback'))$('modalback').classList.remove('show')});
+$('modalConfirm').onclick=()=>{if(confirmAction)confirmAction();$('modalback').classList.remove('show')};
+$('tabs').addEventListener('click',e=>{const b=e.target.closest('[data-tab]');if(!b)return;currentTab=b.dataset.tab;document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t===b));renderUpgrades()});
+$('rebirthBtn').onclick=()=>{const gain=Math.floor(Math.sqrt(Math.max(0,s.coins)/10000));if(s.coins<10000||gain<1){toast('Necesitas al menos 10.000 monedas');return}openModal('👑 ¿Renacer?',`<p>Vas a reiniciar tus monedas y mejoras normales. A cambio, recibirás <b style="color:var(--gold)">${gain} coronas</b>.</p><p>Tu multiplicador permanente se duplicará con este renacimiento y además conservarás la bonificación de coronas e investigaciones. Tu multiplicador de renacimiento se duplicará. Pasarás de <b>x${mult().toFixed(2)}</b> a <b>x${(mult()*2).toFixed(2)}</b> aproximadamente.</p>`,'¡Renacer!',()=>{s.coronas+=gain;s.rebirths++;s.coins=0;for(const d of upgradeDefs)s[d.levelKey]=0;s.autoLevelTotal=0;toast('¡Renacimiento conseguido!');render();save(false)})};
+$('bossAttack').onclick=()=>{damageBoss(Math.max(1,clickPower()));addCoins(Math.max(1,Math.floor(clickPower()*.25)));s.bossAttacks=(s.bossAttacks||0)+1;s.totalBossDamage=(s.totalBossDamage||0)+Math.max(1,clickPower());sound();render();save(false)};
+$('wheelBtn').onclick=spinWheel;
+$('saveBtn').onclick=()=>save(true);
+$('dailyBtn').onclick=()=>{const today=new Date(Date.now()-new Date().getTimezoneOffset()*60000).toISOString().slice(0,10);if(s.lastDaily===today)return;const yesterday=new Date(Date.now()-86400000-new Date(Date.now()-86400000).getTimezoneOffset()*60000).toISOString().slice(0,10);s.dailyStreak=s.lastDaily===yesterday?(s.dailyStreak||0)+1:1;const reward=500*(1+Math.min(6,s.dailyStreak-1));s.lastDaily=today;addCoins(reward);toast('¡Recompensa diaria: +'+fmt(reward)+' monedas!');render();save(false)};
+$('goldenBtn').onclick=()=>{if($('goldenBtn').style.display==='none')return;const reward=Math.max(100,clickPower()*100+cps()*30);addCoins(reward);s.goldenFound=(s.goldenFound||0)+1;$('goldenBtn').style.display='none';toast('🌟 ¡Moneda dorada! +'+fmt(reward));sound();render();save(false)};
+$('soundBtn').onclick=()=>{s.sound=!s.sound;render();save(false);toast('Sonido '+(s.sound?'activado':'desactivado'))};
+$('statsBtn').onclick=()=>openModal('📊 Tus estadísticas',`<div class="rowline"><span>Clics totales</span><b>${fmt(s.totalClicks)}</b></div><div class="rowline"><span>Monedas conseguidas</span><b>${fmt(s.totalCoins)}</b></div><div class="rowline"><span>Coronas de renacimiento</span><b>${fmt(s.coronas)}</b></div><div class="rowline"><span>Renacimientos</span><b>${fmt(s.rebirths)}</b></div><div class="rowline"><span>Mejoras compradas</span><b>${upgradeDefs.reduce((a,d)=>a+lv(d.levelKey),0)}</b></div>`);
+// Boletines compartidos y comprobación de versiones. La URL debe apuntar a un JSON público HTTPS.
+const NEWS_URL_KEY='imperioInfinitoNewsUrl';
+let newsRequestToken=0;
+function newsUrl(){try{return (localStorage.getItem(NEWS_URL_KEY)||'').trim()}catch(e){return ''}}
+function openNews(){
+ const url=newsUrl();
+ openModal('📢 Boletines imperiales',`<p>Consulta anuncios compartidos y comprueba si hay una versión nueva del juego.</p><label for="newsUrlInput" style="display:block;font-size:12px;margin:10px 0 5px;color:var(--muted)">Dirección del archivo JSON público (HTTPS)</label><input id="newsUrlInput" type="url" value="${url.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;')}" placeholder="https://tu-sitio/imperio-news.json" style="width:100%;padding:11px;border-radius:9px;border:1px solid #416384;background:#07172a;color:#fff;box-sizing:border-box"><button class="buy gold" id="saveNewsUrl" style="margin-top:8px">💾 Guardar dirección</button><button class="buy" id="checkNewsBtn" style="margin-top:8px">🔄 Comprobar boletines y versión</button><div id="newsStatus" class="panel" style="margin-top:10px;font-size:12px;line-height:1.5">${url?'Pulsa «Comprobar» para consultar el servidor.':'Aún no hay un servidor configurado. Los boletines compartidos no funcionarán hasta publicar el JSON y pegar aquí su dirección.'}</div><div id="newsItems" style="margin-top:10px"></div><p style="font-size:11px">Formato esperado: <code>{"version":"1.0.1","apkUrl":"https://...","announcements":[{"id":"1","date":"2026-10-14","title":"Bienvenidos","message":"..."}]}</code></p>`);
+}
+async function checkNews(){
+ const input=$('newsUrlInput'),status=$('newsStatus'),items=$('newsItems');
+ if(!input||!status||!items)return;
+ const url=input.value.trim();
+ if(!url){status.textContent='Primero pega y guarda la dirección HTTPS del JSON público.';items.innerHTML='';return}
+ if(!/^https:\/\//i.test(url)){status.textContent='Por seguridad, la dirección debe comenzar por https://';return}
+ try{localStorage.setItem(NEWS_URL_KEY,url)}catch(e){}
+ const token=++newsRequestToken;status.textContent='Conectando con el boletín…';items.innerHTML='';
+ try{
+  const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),9000);
+  const response=await fetch(url,{cache:'no-store',headers:{'Accept':'application/json'},signal:controller.signal});clearTimeout(timer);
+  if(!response.ok)throw new Error('El servidor respondió HTTP '+response.status);
+  const data=await response.json();if(token!==newsRequestToken)return;
+  if(!data||typeof data!=='object')throw new Error('El archivo no tiene el formato esperado.');
+  const current='1.0.0';const version=String(data.version||current);let html='';
+  if(version!==current){html+=`<div class="panel" style="border-color:var(--gold);margin-bottom:8px"><b style="color:var(--gold)">🆕 Versión publicada: ${escapeNews(version)}</b><p>Tu juego instalado es ${current}. Si hay una actualización, puedes abrir el enlace de descarga.</p>${safeHttps(data.apkUrl)?`<button class="buy gold" id="openApkLink">⬇️ Abrir descarga de actualización</button>`:'<p>El administrador todavía no ha añadido un enlace HTTPS válido para la APK.</p>'}</div>`;}
+  const announcements=Array.isArray(data.announcements)?data.announcements:[];
+  if(!announcements.length)html+='<div class="panel">📭 No hay boletines publicados por ahora.</div>';
+  announcements.slice(0,30).forEach(a=>{if(!a||typeof a!=='object')return;html+=`<article class="panel" style="margin-bottom:8px"><b>${escapeNews(a.title||'Anuncio imperial')}</b><div class="muted" style="font-size:10px;margin:4px 0">${escapeNews(a.date||'')}</div><div style="font-size:12px;line-height:1.5;white-space:pre-wrap">${escapeNews(a.message||'')}</div></article>`});
+  status.textContent='✅ Conectado. Última comprobación: '+new Date().toLocaleString();items.innerHTML=html;
+  const openBtn=$('openApkLink');if(openBtn)openBtn.onclick=()=>{const a=document.createElement('a');a.href=data.apkUrl;a.target='_blank';a.rel='noopener';document.body.appendChild(a);a.click();a.remove()};
+ }catch(e){if(token!==newsRequestToken)return;status.textContent='No se pudo cargar el boletín. Revisa internet, la dirección y que el servidor permita solicitudes desde la app (CORS). Detalle: '+(e.name==='AbortError'?'la conexión tardó demasiado':e.message);items.innerHTML=''}
+}
+function safeHttps(value){try{return new URL(String(value)).protocol==='https:'}catch(e){return false}}
+function escapeNews(value){return String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+$('newsBtn').addEventListener('click',openNews);
+$('modalBody').addEventListener('click',e=>{if(e.target.closest('#saveNewsUrl')){const inp=$('newsUrlInput');if(!inp)return;const value=inp.value.trim();if(value&&!/^https:\/\//i.test(value)){toast('La dirección debe comenzar por https://');return}try{if(value)localStorage.setItem(NEWS_URL_KEY,value);else localStorage.removeItem(NEWS_URL_KEY)}catch(err){}toast(value?'Dirección de boletines guardada':'Dirección eliminada');const status=$('newsStatus');if(status)status.textContent=value?'Dirección guardada. Pulsa «Comprobar» para probarla.':'No hay un servidor configurado.'}if(e.target.closest('#checkNewsBtn'))checkNews()});
+$('settingsBtn').onclick=()=>openModal('⚙️ Ajustes','<p>El progreso se guarda en el almacenamiento local de este navegador. Si borras los datos del navegador o desinstalas la app, podrías perder el guardado. Puedes usar “Guardar” para forzar un guardado ahora.</p><p>No hay compras con dinero real ni conexión a servidores en esta versión. Tus reliquias, investigación, personajes y mascotas se conservan al renacer.</p><p>Para guardar una copia, usa el botón Exportar copia del guardado. Guarda el archivo en un lugar seguro.</p><button class="buy" id="exportSaveBtn">📤 Exportar copia del guardado</button><button class="buy" id="importSaveBtn" style="margin-top:8px">📥 Importar copia del guardado</button><input id="importSaveFile" type="file" accept="application/json,.json" style="display:none">');
+$('modalBody').addEventListener('click',e=>{if(e.target.closest('#exportSaveBtn')){const blob=new Blob([JSON.stringify(s,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='imperio-infinito-guardado.json';a.click();URL.revokeObjectURL(url);toast('Copia del guardado exportada')}if(e.target.closest('#importSaveBtn'))$('importSaveFile').click()});$('modalBody').addEventListener('change',e=>{if(e.target.id==='importSaveFile'&&e.target.files&&e.target.files[0]){const file=e.target.files[0],reader=new FileReader();reader.onload=()=>{try{const obj=JSON.parse(reader.result);if(!obj||typeof obj!=='object'||!('coins'in obj))throw Error('invalid');s={...base,...obj};save(false);render();toast('Guardado importado correctamente')}catch(err){toast('El archivo de guardado no es válido')}};reader.readAsText(file)}});
+$('resetBtn').onclick=()=>openModal('🗑️ Borrar progreso','<p>Esto eliminará todo tu progreso guardado en este dispositivo. No se puede deshacer.</p>','Borrar todo',()=>{localStorage.removeItem('imperioInfinitoSave');s={...base};render();toast('Progreso reiniciado')});
+
+const eraNames=['🌿 Era de los comienzos','🏰 Era de los reinos','⚙️ Era de las máquinas','🔮 Era de la magia','🚀 Era galáctica','🕳️ Era del vacío','🌌 Era multiversal','♾️ Era infinita'];
+function researchCost(){const n=Math.max(0,Math.floor(s.research||0));const v=1000*Math.pow(3.2,n);return Number.isFinite(v)?Math.min(1e300,Math.floor(v)):1e300}
+function renderEndless(){const era=s.era||0;$('eraName').textContent=eraNames[Math.min(era,eraNames.length-1)]+(era>=eraNames.length?' · Trascendencia '+(era-eraNames.length+1):'');$('eraLevel').textContent='Era '+(era+1);$('eraBonus').textContent='x'+(1+era*.15).toFixed(2);const ec=Math.floor(10000*Math.pow(8,era));$('expeditionBtn').disabled=s.coins<ec;$('expeditionBtn').textContent='🚀 Comenzar expedición · '+fmt(ec)+' monedas';$('researchLevel').textContent='Nivel '+(s.research||0);const rc=researchCost();$('researchCost').textContent=fmt(rc)+' monedas';$('researchBonus').textContent='x'+Math.pow(1.10,Math.max(0,s.research||0)).toFixed(2)+' ('+Math.round((Math.pow(1.10,Math.max(0,s.research||0))-1)*100)+'% extra)';const canBuy=Number(s.coins)>=rc&&rc>0;$('researchBtn').disabled=false;$('researchBtn').textContent=canBuy?'🧪 Investigar ahora · '+fmt(rc)+' monedas':'🧪 Investigar · faltan '+fmt(Math.max(0,rc-Number(s.coins||0)))+' monedas';$('researchBtn').style.opacity=canBuy?'1':'.78';$('researchBtn').setAttribute('aria-label',canBuy?'Comprar investigación por '+fmt(rc)+' monedas':'Necesitas '+fmt(Math.max(0,rc-Number(s.coins||0)))+' monedas más para investigar')}
+$('expeditionBtn').onclick=()=>{const era=s.era||0;const ec=Math.floor(10000*Math.pow(8,era));if(s.coins<ec)return toast('Necesitas más monedas para la expedición');s.coins-=ec;s.era=era+1;toast('🚀 ¡Nueva era desbloqueada!');render();save(false)};
+function buyResearch(){const rc=researchCost();if(!Number.isFinite(rc)||rc<=0){toast('El coste de investigación alcanzó el límite técnico.');return}if(Number(s.coins||0)<rc){toast('Te faltan '+fmt(rc-Number(s.coins||0))+' monedas para investigar.');renderEndless();return}const oldLevel=Number(s.research||0);s.coins-=rc;s.research=oldLevel+1;const after=Math.round((Math.pow(1.10,s.research)-1)*100);toast('🧬 Investigación nivel '+s.research+': bonificación total +'+after+'%');render();save(false)}$('researchBtn').addEventListener('click',buyResearch);
+load();if(!s.bossStage)s.bossStage=1;if(!s.bossHp||s.bossHp<=0)s.bossHp=bossMax();render();
+setInterval(()=>{const income=cps();if(income>0){addCoins(income);render()}if(Date.now()-lastTap>1300)streak=0;renderWheel();renderSkills();if(Date.now()<(s.buffUntil||0))$('multiplier').textContent='x'+(mult()>=1e12?mult().toExponential(2):mult().toFixed(2))+' ⚡'},1000);
+setInterval(()=>{if($('goldenBtn').style.display==='none'&&Math.random()<.7){$('goldenBtn').style.display='block';toast('¡Apareció una moneda dorada!');setTimeout(()=>{if($('goldenBtn').style.display!=='none')$('goldenBtn').style.display='none'},12000)}},35000);
+setInterval(()=>save(false),5000);
+document.addEventListener('visibilitychange',()=>{if(document.hidden){s.lastSeen=Date.now();save(false)}});
+window.addEventListener('beforeunload',()=>{s.lastSeen=Date.now();save(false)});
+})();
+</script>
+</body>
+</html>
